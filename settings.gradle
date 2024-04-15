@@ -1,0 +1,3 @@
+rootProject.name = "Testy na Karte Wedkarska"
+include ":backend"
+include ":frontend"
