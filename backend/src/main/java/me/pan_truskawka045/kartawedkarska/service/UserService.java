@@ -9,15 +9,15 @@ public interface UserService {
 
     List<User> getUsers();
 
-    Optional<User> getUserByUsername(String username);
+    Optional<User> getUserByEmail(String username);
 
     boolean hasUserWithUsername(String username);
 
     boolean hasUserWithEmail(String email);
 
-    User validateAndGetUserByUsername(String username);
+    User validateAndGetUserByEmail(String username);
 
-    User saveUser(User user);
+    User saveUserPassword(User user, String password);
 
     void deleteUser(User user);
 

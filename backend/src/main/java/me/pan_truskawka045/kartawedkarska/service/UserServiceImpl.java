@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> getUserByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> getUserByEmail(String username) {
+        return userRepository.findByEmail(username);
     }
 
     @Override
@@ -38,14 +38,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User validateAndGetUserByUsername(String username) {
-        return getUserByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException(String.format("User with username %s not found", username)));
+    public User validateAndGetUserByEmail(String username) {
+        return getUserByEmail(username)
+                .orElseThrow(() -> new UserNotFoundException(username));
     }
 
     @Override
-    public User saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public User saveUserPassword(User user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
         return userRepository.save(user);
     }
 
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> validUsernameAndPassword(String username, String password) {
-        return getUserByUsername(username)
+        return getUserByEmail(username)
                 .filter(user -> passwordEncoder.matches(password, user.getPassword()));
     }
 

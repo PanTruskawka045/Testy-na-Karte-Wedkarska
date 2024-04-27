@@ -1,0 +1,24 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://koks-vps:3306/karta_wedkarska?useUnicode=yes&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: karta_wedkarska
+    password: "P6raIAd5wyPFeM0U"
+    hikari:
+      idle-timeout: 10000
+      jdbc-url: jdbc:mysql://koks-vps:3306/karta_wedkarska?useUnicode=yes&characterEncoding=UTF-8
+      username: karta_wedkarska
+      password: "P6raIAd5wyPFeM0U"
+      maximum-pool-size: 10
+      connectionInitSql: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  sql:
+    init:
+      encoding: UTF-8
+
+security:
+  allowed-origins: ['http://localhost:3000']

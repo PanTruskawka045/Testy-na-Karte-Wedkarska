@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter} from "react-router-dom";
+import {ApplicationContextProvider} from "./context/ApplicationContext";
+import Header from "./component/navigation/Header";
+import MainContent from "./component/MainContent";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <ApplicationContextProvider>
+                <div className={"fixed w-screen"}>
+                    <Header/>
+                </div>
+                <MainContent/>
+            </ApplicationContextProvider>
+        </BrowserRouter>
+    );
 }
 
 export default App;
