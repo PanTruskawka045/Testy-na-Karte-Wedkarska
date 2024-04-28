@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -21,5 +24,8 @@ public class User {
     private String password;
     private String name;
     private String email;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Test> tests;
 
 }

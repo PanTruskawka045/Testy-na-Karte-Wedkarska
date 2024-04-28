@@ -11,7 +11,7 @@ function AccountDashboard() {
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get('api/user/about', {
+            const response = await axios.get('api/user/tests', {
                 validateStatus: () => true,
                 headers: {
                     'Authorization': `Basic ${app.getUser().authData}`
