@@ -17,19 +17,23 @@ function Login() {
     }
 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const response = await axios.post(`/api/auth/login`, {username, password}, {
-                headers: {'Content-type': 'application/json'}
+        (async () => {
+            const response = await axios.post(`/api/auth/login`, {username, password}, {
+                    headers: {'Content-type': 'application/json'},
+                    validateStatus: () => true
+                }
+            )
+            console.log(response.body)
+            if (response.status !== 200) {
+                setIsError(true)
+                return
             }
-        )
-        if (response.status !== 200) {
-            setIsError(true)
-            return
-        }
-        const authData = window.btoa(username + ':' + password)
-        const authenticatedUser = {authData, ...response.data}
-        app.setUser(authenticatedUser);
+            const authData = window.btoa(username + ':' + password)
+            const authenticatedUser = {authData, ...response.data}
+            app.setUser(authenticatedUser);
+        })();
     }
 
     return (
@@ -39,7 +43,7 @@ function Login() {
                     <img src={logo} alt={"Logo"} className={"h-[600px]"}/>
                     <form onSubmit={handleSubmit} className={"ml-20 w-80 flex flex-col mr-20 mt-10"}>
                         {isError ? <div className={"bg-red-200 p-2 rounded-2xl text-red-800"}>Błąd logowania</div> : ""}
-                        <label className={"mr-2 text-gray-800 pt-8"}>Login</label>
+                        <label className={"mr-2 text-gray-800 pt-8"}>Email</label>
                         <input className={`
                             bg-gray-50 placeholder-gray-200 p-2 px-4 rounded-2xl 
                             focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 focus:bg-gray-100
@@ -57,7 +61,7 @@ function Login() {
                                type={"password"} onChange={(event) => setPassword(event.target.value)}/>
                         <button type={"submit"} className={`
                             rounded-2xl mt-8 bg-indigo-500 text-white p-2 px-4 hover-transition
-                        `}>Login
+                        `}>Zaloguj się
                         </button>
 
                         <Link to={"/register"} className={"text-center mt-2 link"}>Stwórz konto</Link>

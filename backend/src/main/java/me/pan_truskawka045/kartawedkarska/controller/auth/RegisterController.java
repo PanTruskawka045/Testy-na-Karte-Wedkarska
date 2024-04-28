@@ -34,6 +34,6 @@ public class RegisterController {
         user.setEmail(registerRequest.getEmail());
         user.setName(registerRequest.getName());
         userService.saveUserPassword(user, registerRequest.getPassword());
-        return ResponseEntity.status(HttpStatus.CREATED).body(new AuthResponse(user.getId(), user.getName()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new AuthResponse(user.getId(), user.getUsername(), user.getName()));
     }
 }

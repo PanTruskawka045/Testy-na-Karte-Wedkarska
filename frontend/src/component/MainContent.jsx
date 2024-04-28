@@ -1,8 +1,9 @@
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
 import MainPage from "./MainPage";
 import AccountDashboard from "./account/AccountDashboard";
+import RequiredAuthentication from "./auth/RequiredAuthentication";
 
 function MainContent() {
 
@@ -12,10 +13,14 @@ function MainContent() {
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
                     <Route index element={<MainPage/>}/>
-                    <Route path="*" element={<MainPage/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/register" element={<Register/>}/>
-                    <Route path="/account" element={<AccountDashboard/>}/>
+                    <Route path="/account" element={
+                        <RequiredAuthentication>
+                            <AccountDashboard/>
+                        </RequiredAuthentication>
+                        }/>
+                    <Route path="*" element={<Navigate to={"/"}/>}/>
                 </Routes>
             </div>
         </div>
