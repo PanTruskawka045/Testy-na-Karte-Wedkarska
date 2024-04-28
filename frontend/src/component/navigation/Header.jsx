@@ -1,6 +1,7 @@
 import icon from "../../assets/logo512.png";
 import React from "react";
 import {useApplicationContext} from "../../context/ApplicationContext";
+import DayNightToggle from 'react-day-and-night-toggle';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -28,6 +29,13 @@ function Header() {
             <img src={icon} className="h-full rounded-md" alt="Background"/>
             <span className={"font-bold text-2xl text-black ml-2"}>Karta Wędkarska</span>
             <div className={"p-2 ml-auto"}>
+                <DayNightToggle
+                    onChange={() => {
+                        appContext.toggleTheme();
+                    }}
+                    checked={theme === "dark"}
+                />
+
                 {appContext.isUserAuthenticated() ? (
                     <>
                         <Link to={"/account"}>
