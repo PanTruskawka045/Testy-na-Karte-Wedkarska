@@ -8,7 +8,7 @@ import RequiredAuthentication from "./auth/RequiredAuthentication";
 function MainContent() {
 
     return (
-        <div className={"w-full flex justify-center"}>
+        <div className={"w-full flex justify-center dark:bg-gray-700 "}>
             <div className={"h-screen pt-20 mx-4"}>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>

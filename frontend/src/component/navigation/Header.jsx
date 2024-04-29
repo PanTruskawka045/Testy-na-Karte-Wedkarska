@@ -31,7 +31,7 @@ function Header() {
                 {appContext.isUserAuthenticated() ? (
                     <>
                         <Link to={"/account"}>
-                            <span className={"font-semibold"}>{appContext.getUser().name}</span>
+                            <span className={"font-semibold dark:text-white hover-transition"}>{appContext.getUser().name}</span>
                         </Link>
                         <button type={"button"}
                                 className={"p-2 rounded-xl bg-indigo-600 text-white px-4 font-semibold font-red-hat"}

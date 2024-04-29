@@ -51,49 +51,49 @@ function Register() {
 
     return (
         <div className={"flex justify-center items-center h-[calc(100vh-80px)]"}>
-            <div className={"rounded-2xl overflow-hidden border-indigo-200 border-2"}>
+            <div className={"rounded-2xl overflow-hidden border-indigo-200 border-2 dark:border-indigo-700"}>
                 <div className={"flex flex-row"}>
                     <img src={logo} alt={"Logo"} className={"h-[600px]"}/>
                     <form onSubmit={handleSubmit} className={"ml-20 w-80 flex flex-col mr-20"}>
                         {error ? <div className={"bg-red-200 p-2 rounded-2xl text-red-800"}>{error}</div> : ""}
-                        <label className={"mr-2 text-gray-800 pt-8"}>Email</label>
+                        <label className={"mr-2 text-gray-800 pt-8 dark:text-white "}>Email</label>
                         <input className={`
-                            bg-gray-50 placeholder-gray-200 p-2 px-4 rounded-2xl 
+                            bg-gray-100 placeholder-gray-300 p-2 px-4 rounded-2xl 
                             focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 focus:bg-gray-100
-                            text-gray-600
+                            text-gray-600 dark:bg-gray-500 dark:text-white
                         `}
                                placeholder={"Email"}
                                type={"email"} onChange={(event) => setEmail(event.target.value)}/>
 
-                        <label className={"mr-2 text-gray-800 pt-8"}>Imię</label>
+                        <label className={"mr-2 text-gray-800 pt-8 dark:text-white "}>Imię</label>
                         <input className={`
-                            bg-gray-50 placeholder-gray-200 p-2 px-4 rounded-2xl 
+                            bg-gray-100 placeholder-gray-300 p-2 px-4 rounded-2xl 
                             focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 focus:bg-gray-100
-                            text-gray-600
+                            text-gray-600 dark:bg-gray-500 dark:text-white
                         `}
                                placeholder={"Imię"}
                                type={"text"} onChange={(event) => setName(event.target.value)}/>
 
-                        <label className={"mr-2 text-gray-800 pt-8"}>Nazwa Użytkownika</label>
+                        <label className={"mr-2 text-gray-800 pt-8 dark:text-white "}>Nazwa Użytkownika</label>
                         <input className={`
-                            bg-gray-50 placeholder-gray-200 p-2 px-4 rounded-2xl 
+                            bg-gray-100 placeholder-gray-300 p-2 px-4 rounded-2xl 
                             focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 focus:bg-gray-100
-                            text-gray-600
+                            text-gray-600 dark:bg-gray-500 dark:text-white
                         `}
                                placeholder={"Nazwa Użytkownika"}
                                type={"text"} onChange={(event) => setUsername(event.target.value)}/>
 
 
-                        <label className={"mr-2 text-gray-800 pt-8"}>Hasło</label>
+                        <label className={"mr-2 text-gray-800 pt-8 dark:text-white"}>Hasło</label>
                         <input className={`
-                            bg-gray-50 placeholder-gray-200 p-2 px-4 rounded-2xl 
+                            bg-gray-100 placeholder-gray-300 p-2 px-4 rounded-2xl 
                             focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 focus:bg-gray-100
-                            text-gray-600
+                            text-gray-600 dark:bg-gray-500 dark:text-white
                         `}
                                placeholder={"Hasło"}
                                type={"password"} onChange={(event) => setPassword(event.target.value)}/>
                         <button type={"submit"} className={`
-                            rounded-2xl mt-8 bg-indigo-500 text-white p-2 px-4 hover-transition
+                            rounded-2xl mt-8 bg-indigo-500 text-white p-2 px-4 hover-transition font-semibold font-red-hat
                         `}>Zarejestruj się
                         </button>
                         <Link to={"/login"} className={"text-center mt-2 link"}>Zaloguj się</Link>
