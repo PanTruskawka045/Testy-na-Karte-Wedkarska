@@ -28,7 +28,7 @@ function Register() {
             ).catch((e) => {
                 console.log(e);
             })
-            if (response.status !== 200) {
+            if (response.status !== 201) {
                 if (response.status === 409) {
                     if (response.data.internalCode === 0x02) {
                         setError("Użytkownik o podanej nazwie już istnieje")

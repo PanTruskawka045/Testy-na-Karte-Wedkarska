@@ -8,6 +8,10 @@
     @apply text-blue-500 hover:text-blue-700;
 }
 
+* {
+    @apply transition-colors duration-300;
+}
+
 .hover-transition {
     @apply hover:scale-105 transition-transform;
 }

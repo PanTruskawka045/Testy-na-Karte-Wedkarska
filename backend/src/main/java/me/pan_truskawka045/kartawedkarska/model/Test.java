@@ -22,8 +22,8 @@ public class Test {
 
     private String publicId = UUID.randomUUID().toString().replace("-", "");
 
-    @Enumerated
-    private TestStatus status;
+    @Enumerated(EnumType.STRING)
+    private TestStatus status = TestStatus.IN_PROGRESS;
 
     private Date startDate;
     private Date finishDate;
