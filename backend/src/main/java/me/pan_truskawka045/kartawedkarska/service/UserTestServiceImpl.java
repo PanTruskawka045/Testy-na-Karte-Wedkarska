@@ -7,17 +7,18 @@ import me.pan_truskawka045.kartawedkarska.dto.tests.UserTestRecord;
 import me.pan_truskawka045.kartawedkarska.model.Test;
 import me.pan_truskawka045.kartawedkarska.model.User;
 import me.pan_truskawka045.kartawedkarska.repository.TestRepository;
+import me.pan_truskawka045.kartawedkarska.repository.UserRepository;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserTestServiceImpl implements UserTestService{
+public class UserTestServiceImpl implements UserTestService {
 
     private final TestRepository testRepository;
+    private final UserRepository userRepository;
 
     @Override
     public Optional<Test> getCurrentTest(User user) {
@@ -37,14 +38,26 @@ public class UserTestServiceImpl implements UserTestService{
     @Override
     public List<CompletedTestRecord> mapToCompletedTestRecords(List<Test> tests) {
         return tests.stream().filter(t -> t.getStatus() == TestStatus.COMPLETED)
-                .map(t -> {
-                    return new CompletedTestRecord(t.getPublicId(),
-                            t.getStatus(),
-                            t.getPoints(),
-                            t.getMaxPoints(),
-                            (t.getPoints() / (double) t.getMaxPoints()) >= .5,
-                            t.getStartDate(),
-                            t.getFinishDate());
-                }).toList();
+                .map(t -> new CompletedTestRecord(t.getPublicId(),
+                        t.getStatus(),
+                        t.getPoints(),
+                        t.getMaxPoints(),
+                        (t.getPoints() / (double) t.getMaxPoints()) >= .5,
+                        t.getStartDate(),
+                        t.getFinishDate())).toList();
+    }
+
+    @Override
+    public Test startTest(User user) {
+        Optional<Test> currentTest = getCurrentTest(user);
+        if (currentTest.isPresent()) {
+            return currentTest.get();
+        }
+        Test test = new Test();
+        test.setUser(user);
+        testRepository.save(test);
+        user.getTests().add(test);
+        userRepository.save(user);
+        return test;
     }
 }

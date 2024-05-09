@@ -1,6 +1,5 @@
 package me.pan_truskawka045.kartawedkarska.secutiry;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

@@ -25,7 +25,7 @@ public class Test {
     @Enumerated(EnumType.STRING)
     private TestStatus status = TestStatus.IN_PROGRESS;
 
-    private Date startDate;
+    private Date startDate = new Date();
     private Date finishDate;
 
     private int points;

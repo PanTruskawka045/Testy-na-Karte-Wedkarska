@@ -9,13 +9,18 @@ function MainContent() {
 
     return (
         <div className={"w-full flex justify-center dark:bg-gray-700 "}>
-            <div className={"h-screen pt-20 mx-4"}>
+            <div className={"h-screen pt-20 mx-4 w-4/5"}>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
                     <Route index element={<MainPage/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/register" element={<Register/>}/>
                     <Route path="/account" element={
+                        <RequiredAuthentication>
+                            <AccountDashboard/>
+                        </RequiredAuthentication>
+                        }/>
+                    <Route path="/test/:testId" element={
                         <RequiredAuthentication>
                             <AccountDashboard/>
                         </RequiredAuthentication>

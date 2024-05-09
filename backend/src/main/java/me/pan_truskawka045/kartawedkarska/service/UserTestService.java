@@ -16,4 +16,5 @@ public interface UserTestService {
     Optional<UserTestRecord> mapToTestRecord(Optional<Test> test);
     List<CompletedTestRecord> mapToCompletedTestRecords(List<Test> tests);
 
+    Test startTest(User user);
 }
