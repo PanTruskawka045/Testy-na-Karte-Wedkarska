@@ -25,7 +25,6 @@ function Login() {
                     validateStatus: () => true
                 }
             )
-            console.log(response.body)
             if (response.status !== 200) {
                 setIsError(true)
                 return

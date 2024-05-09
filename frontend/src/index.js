@@ -4,6 +4,9 @@ import './css/index.css';
 import './css/loading.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import moment from "moment";
+
+require('moment/locale/pl');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

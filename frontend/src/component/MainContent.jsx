@@ -10,7 +10,7 @@ function MainContent() {
 
     return (
         <div className={"w-full flex justify-center dark:bg-gray-700 "}>
-            <div className={"h-screen pt-20 mx-4"}>
+            <div className={"h-screen pt-20 mx-4 w-4/5"}>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
                     <Route index element={<MainPage/>}/>
