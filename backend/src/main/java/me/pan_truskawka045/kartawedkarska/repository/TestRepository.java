@@ -18,4 +18,6 @@ public interface TestRepository extends JpaRepository<Test, Long> {
     @Query("SELECT t FROM Test t WHERE t.user = ?1 AND t.status = 'COMPLETED'")
     List<Test> findAllCompletedByUser(User user);
 
+    Optional<Test> findByPublicId(String publicId);
+
 }

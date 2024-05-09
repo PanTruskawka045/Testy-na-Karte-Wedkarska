@@ -1,5 +1,6 @@
 package me.pan_truskawka045.kartawedkarska.model;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,10 +18,11 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private boolean enabled;
     private String question;
     private String image;
-    private int correctAnswer;
-    @Convert(converter = StringToListConverter.class)
-    private List<String> answers;
+    private String correctAnswer;
+    private String firstWrongAnswer, secondWrongAnswer, thirdWrongAnswer;
+
 
 }

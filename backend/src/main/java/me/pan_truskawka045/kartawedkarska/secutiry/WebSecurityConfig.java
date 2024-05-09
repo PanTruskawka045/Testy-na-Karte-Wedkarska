@@ -28,6 +28,7 @@ public class WebSecurityConfig {
         return http
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers("/api/user/**").authenticated()
+                        .requestMatchers("/api/test/**").authenticated()
                         .requestMatchers("/public/**", "/assets/**", "/api/auth/**").permitAll()
                         .requestMatchers("/", "/error").permitAll()
                         .anyRequest().authenticated())

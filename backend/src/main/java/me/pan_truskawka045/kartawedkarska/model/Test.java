@@ -3,6 +3,7 @@ package me.pan_truskawka045.kartawedkarska.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.pan_truskawka045.kartawedkarska.converter.TestConverter;
 import me.pan_truskawka045.kartawedkarska.dto.tests.TestStatus;
 
 import java.util.Date;
@@ -34,5 +35,8 @@ public class Test {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Convert(converter = TestConverter.class)
+    private TestQuestions questions;
 
 }

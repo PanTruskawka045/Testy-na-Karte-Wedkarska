@@ -14,8 +14,8 @@ function Header() {
     }
 
     return (
-        <header className={"h-20 background p-4 flex flex-row items-center text-black dark:bg-gray-700 " +
-            "border-b-4 border-indigo-500"}>
+        <header className={`h-20 background p-4 flex flex-row items-center text-black bg-white dark:bg-gray-700 
+        border-b-4 border-indigo-500`}>
             <img src={icon} className="h-full rounded-md" alt="Background"/>
             <Link to={"/"}>
                 <span className={"font-bold text-2xl text-black dark:text-white ml-2 hover-transition"}>Karta Wędkarska</span>
