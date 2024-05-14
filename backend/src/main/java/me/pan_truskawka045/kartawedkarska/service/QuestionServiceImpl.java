@@ -16,6 +16,7 @@ import me.pan_truskawka045.kartawedkarska.repository.QuestionRepository;
 import me.pan_truskawka045.kartawedkarska.repository.TestRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -39,11 +40,15 @@ public class QuestionServiceImpl implements QuestionService {
                 }
             });
 
-    private final Supplier<List<Question>> questionsSupplier = Suppliers.memoizeWithExpiration(questionRepository::findAllEnabled, 1, TimeUnit.HOURS);
+    private final Supplier<List<Question>> questionsSupplier = Suppliers.memoizeWithExpiration(this::getAllQuestionsFromRepository, 1, TimeUnit.HOURS);
+
+    private List<Question> getAllQuestionsFromRepository(){
+        return questionRepository.findAllEnabled();
+    }
 
     @Override
     public int generateRandomQuestionAnswersOrder() {
-        List<Integer> numbers = List.of(0, 1, 2, 3);
+        List<Integer> numbers = Arrays.asList(0, 1, 2, 3);
         Collections.shuffle(numbers);
         int[] order = numbers.stream().mapToInt(i -> i).toArray();
         int result = 0;
@@ -78,6 +83,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void markAnswer(int questionId, int markedAnswer, Test test) {
+        System.out.println(test.getPublicId() + " " + markedAnswer + " " + questionId);
         if (test.getStatus() != TestStatus.IN_PROGRESS) {
             throw new TestAlreadyFinishedException();
         }
@@ -85,13 +91,28 @@ public class QuestionServiceImpl implements QuestionService {
         if (questionId < 0 || questionId >= questions.getQuestions().length) {
             throw new InvalidQuestionException();
         }
-        int clickedAnswer = getAnswersOrder(questions.getQuestions()[questionId].getAnswersMap())[markedAnswer];
-        questions.getQuestions()[questionId].setMarkedAnswer(clickedAnswer);
+        if(markedAnswer == -1){
+            questions.getQuestions()[questionId].setMarkedAnswer(-1);
+        } else {
+            questions.getQuestions()[questionId].setMarkedAnswer(getAnswersOrder(questions.getQuestions()[questionId].getAnswersMap())[markedAnswer]);
+        }
         testRepository.save(test);
     }
+
 
     @Override
     public void unmarkAnswer(int questionId, Test test) {
         markAnswer(questionId, -1, test);
+    }
+
+    @Override
+    public int getMarkedAnswer(int answerMap, int marked) {
+        int[] answersOrder = getAnswersOrder(answerMap);
+        for (int i = 0; i < answersOrder.length; i++) {
+            if (answersOrder[i] == marked) {
+                return i;
+            }
+        }
+        return 0;
     }
 }

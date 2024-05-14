@@ -17,4 +17,5 @@ public interface UserTestService {
     List<CompletedTestRecord> mapToCompletedTestRecords(List<Test> tests);
 
     Test startTest(User user);
+    void setTestQuestions(Test test);
 }

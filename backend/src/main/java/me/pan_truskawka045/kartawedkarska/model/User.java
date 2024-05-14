@@ -29,4 +29,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Test> tests;
 
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof User && ((User) obj).getId().equals(this.id);
+    }
 }

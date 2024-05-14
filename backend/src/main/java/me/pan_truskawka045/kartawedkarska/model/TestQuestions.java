@@ -2,16 +2,19 @@ package me.pan_truskawka045.kartawedkarska.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
 public class TestQuestions {
 
     private TestQuestion[] questions;
 
     @Getter
     @Setter
+    @NoArgsConstructor
     public static final class TestQuestion {
 
         private int id;

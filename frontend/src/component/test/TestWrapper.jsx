@@ -3,7 +3,10 @@ import axios from "axios";
 import {Navigate, useParams} from "react-router-dom";
 import TestView from "./TestView";
 import {TestContextProvider} from "../../context/TestContext";
+import {useApplicationContext} from "../../context/ApplicationContext";
 function TestWrapper() {
+
+    const app = useApplicationContext();
 
     const {testId} = useParams();
     const [test, setTest] = useState(null);
@@ -13,14 +16,18 @@ function TestWrapper() {
 
 
     useEffect(() => {
-        if(true) return;
         (async () => {
             const response = await axios.get(`/api/test/details?testId=${testId}`, {
-                validateStatus: () => true
+                validateStatus: () => true,
+                headers: {
+                    'Authorization': `Basic ${app.getUser().authData}`
+                }
             })
+            setLoading(false);
             if(response.status !== 200){
                 setError(true)
             }
+            setTest(response.data);
         })();
     }, []);
 
@@ -28,13 +35,15 @@ function TestWrapper() {
         return (<Navigate to={'/account'}/>);
     }
 
-    if(loading && false){
+
+
+    if(loading  || test === undefined){
         //TODO return loading spinner (jak sie komputer naprawi)
         return <div></div>;
     }
 
     return (
-        <TestContextProvider test={test}>
+        <TestContextProvider testData={test}>
             <TestView/>
         </TestContextProvider>
 

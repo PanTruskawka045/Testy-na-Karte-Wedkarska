@@ -19,4 +19,6 @@ public interface QuestionService {
     void markAnswer(int questionId, int markedAnswer, Test test);
 
     void unmarkAnswer(int questionId, Test test);
+
+    int getMarkedAnswer(int answerMap, int marked);
 }
