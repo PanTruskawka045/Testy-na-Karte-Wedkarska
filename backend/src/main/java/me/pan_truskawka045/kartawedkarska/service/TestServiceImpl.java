@@ -58,7 +58,43 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public TestDetails<CompletedTestAnswer> getCompletedTestDetails(Test test) {
-        return null;
+        CompletedTestAnswer[] testAnswers = new CompletedTestAnswer[test.getQuestions().getQuestions().length];
+        TestQuestion[] testQuestions = new TestQuestion[test.getQuestions().getQuestions().length];
+
+        for (int i = 0; i < test.getQuestions().getQuestions().length; i++) {
+            TestQuestions.TestQuestion question = test.getQuestions().getQuestions()[i];
+            int[] answersOrder = questionService.getAnswersOrder(question.getAnswersMap());
+            TestQuestion testQuestion = questionService.getQuestionById(question.getId()).map(q -> {
+                String[] answers = new String[answersOrder.length];
+                for (int j = 0; j < answersOrder.length; j++) {
+                    int answerIndex = answersOrder[j];
+                    answers[j] = switch (answerIndex) {
+                        case 0 -> q.getCorrectAnswer();
+                        case 1 -> q.getFirstWrongAnswer();
+                        case 2 -> q.getSecondWrongAnswer();
+                        case 3 -> q.getThirdWrongAnswer();
+                        default -> "";
+                    };
+                }
+                return new TestQuestion(q.getQuestion(), q.getImage(), answers);
+            }).orElse(placeHolderQuestion);
+            testQuestions[i] = testQuestion;
+
+            int marked = question.getMarkedAnswer() == -1 ? -1 : questionService.getMarkedAnswer(question.getAnswersMap(), question.getMarkedAnswer());
+            int correct = -1;
+            for (int j = 0; j < answersOrder.length; j++) {
+                if (answersOrder[j] == 0) {
+                    correct = j;
+                    break;
+                }
+            }
+
+            CompletedTestAnswer testAnswer = new CompletedTestAnswer(marked, correct);
+            testAnswers[i] = testAnswer;
+        }
+
+
+        return new TestDetails<>(test.getPublicId(), testAnswers, testQuestions, TestStatus.COMPLETED);
     }
 
     @Override

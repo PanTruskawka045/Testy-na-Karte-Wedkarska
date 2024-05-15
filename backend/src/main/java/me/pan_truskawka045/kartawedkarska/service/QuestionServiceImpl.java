@@ -16,10 +16,7 @@ import me.pan_truskawka045.kartawedkarska.repository.QuestionRepository;
 import me.pan_truskawka045.kartawedkarska.repository.TestRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -42,7 +39,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final Supplier<List<Question>> questionsSupplier = Suppliers.memoizeWithExpiration(this::getAllQuestionsFromRepository, 1, TimeUnit.HOURS);
 
-    private List<Question> getAllQuestionsFromRepository(){
+    private List<Question> getAllQuestionsFromRepository() {
         return questionRepository.findAllEnabled();
     }
 
@@ -91,7 +88,7 @@ public class QuestionServiceImpl implements QuestionService {
         if (questionId < 0 || questionId >= questions.getQuestions().length) {
             throw new InvalidQuestionException();
         }
-        if(markedAnswer == -1){
+        if (markedAnswer == -1) {
             questions.getQuestions()[questionId].setMarkedAnswer(-1);
         } else {
             questions.getQuestions()[questionId].setMarkedAnswer(getAnswersOrder(questions.getQuestions()[questionId].getAnswersMap())[markedAnswer]);

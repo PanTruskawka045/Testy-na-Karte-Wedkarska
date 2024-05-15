@@ -12,10 +12,7 @@ import me.pan_truskawka045.kartawedkarska.repository.TestRepository;
 import me.pan_truskawka045.kartawedkarska.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RequiredArgsConstructor
 @Service
@@ -84,5 +81,22 @@ public class UserTestServiceImpl implements UserTestService {
 
         TestQuestions testQuestions = new TestQuestions(questions);
         test.setQuestions(testQuestions);
+        test.setMaxPoints(testQuestions.getQuestions().length);
+    }
+
+
+    @Override
+    public void finishTest(Test test) {
+        test.setFinishDate(new Date());
+        test.setStatus(TestStatus.COMPLETED);
+        int correct = 0;
+        for (int i = 0; i < test.getMaxPoints(); i++) {
+            TestQuestions.TestQuestion question = test.getQuestions().getQuestions()[i];
+            if (question.getMarkedAnswer() == 0) {
+                correct++;
+            }
+        }
+        test.setPoints(correct);
+        testRepository.save(test);
     }
 }

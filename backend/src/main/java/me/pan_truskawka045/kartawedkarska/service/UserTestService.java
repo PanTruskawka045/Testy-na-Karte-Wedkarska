@@ -18,4 +18,5 @@ public interface UserTestService {
 
     Test startTest(User user);
     void setTestQuestions(Test test);
+    void finishTest(Test test);
 }
