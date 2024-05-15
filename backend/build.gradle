@@ -44,8 +44,15 @@ tasks.register('copyWebApp', Copy) {
     into "$rootDir/backend/build/resources/main/static/."
 }
 
-bootJar.dependsOn(copyWebApp)
-compileJava.dependsOn ":frontend:build"
-tasks.resolveMainClassName.dependsOn(tasks.copyWebApp)
-tasks.jar.dependsOn(tasks.copyWebApp)
-tasks.getByPath(':backend:compileTestJava').dependsOn(tasks.getByPath(':backend:copyWebApp'))
+tasks.register('buildprod') {
+    dependsOn ':frontend:build'
+    dependsOn 'copyWebApp'
+    dependsOn 'build'
+    tasks.findByName("copyWebApp").dependsOn ':frontend:build'
+    tasks.findByName("build").dependsOn 'copyWebApp'
+    tasks.getByPath(':backend:compileTestJava').mustRunAfter(tasks.getByPath(':backend:copyWebApp'))
+    tasks.findByName('test').dependsOn ':backend:copyWebApp';
+    tasks.getByPath(':backend:jar').mustRunAfter(tasks.getByPath(':backend:copyWebApp'))
+    tasks.getByPath(':backend:bootJar').mustRunAfter(tasks.getByPath(':backend:copyWebApp'))
+    tasks.getByPath(':backend:resolveMainClassName').mustRunAfter(tasks.getByPath(':backend:copyWebApp'))
+}
