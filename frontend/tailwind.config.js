@@ -24,6 +24,8 @@ module.exports = {
     {
       pattern: /bg-+/,
     },
+    "text-green-500",
+    "text-red-500"
   ],
 }
 

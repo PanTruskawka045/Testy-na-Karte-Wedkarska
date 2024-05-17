@@ -24,6 +24,7 @@ function AccountDashboard() {
                 app.logout();
                 return;
             }
+            console.log(response.data);
             setCurrentTest(response.data.currentTest);
             setTests(response.data.tests);
             setLoading(false);
@@ -117,6 +118,36 @@ function CompletedTests({tests}){
     if(tests.length === 0){
         return (<span>Brak rozwiązanych testów</span>)
     }
+
+    return (
+        <>
+            {tests.map((test, index) => {
+
+                return (
+                    <Link to={`/test/${test.testId}`}>
+                        <div
+                            className={`w-[800px] h-16 bg-${test.passed ? "green" : "red"}-200 rounded-2xl grid grid-cols-12 items-center font-bold text-${test.passed ? "green" : "red"}-500 text-center mb-2 hover-transition`}>
+                            <div className={"col-span-3"}>
+                                <span>Status: Skończono</span>
+                            </div>
+                            <div className={"col-span-3"}>
+                                <span>Rozpoczęto: </span>
+                                {moment(test.startDate).calendar()}
+                            </div>
+                            <div className={"col-span-3"}>
+                                <span>Rozpoczęto: </span>
+                                {moment(test.finishDate).calendar()}
+                            </div>
+                            <div className={"col-span-3"}>
+                                <span>Wynik: {test.points}/{test.maxPoints}</span>
+                            </div>
+                        </div>
+                    </Link>
+                );
+            })}
+        </>
+    )
+
 
 }
 
