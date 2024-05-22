@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/karta_wedkarska?useUnicode=yes&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: karta_wedkarska
+    hikari:
+      idle-timeout: 10000
+      jdbc-url: jdbc:mysql://localhost:3306/karta_wedkarska?useUnicode=yes&characterEncoding=UTF-8
+      username: karta_wedkarska
+      maximum-pool-size: 10
+      connectionInitSql: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  sql:
+    init:
+      encoding: UTF-8
+
+security:
+  allowed-origins: ['https://karta-wedkarska.pantruskawka045.me']

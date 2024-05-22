@@ -30,7 +30,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/api/test/**").authenticated()
                         .requestMatchers("/public/**", "/assets/**", "/api/auth/**").permitAll()
                         .requestMatchers("/", "/error").permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .cors(Customizer.withDefaults())
