@@ -12,6 +12,11 @@ W aplikacji są to klasy, które dziedziczą po `JpaRepository` z pakietu `org.s
 
 W repozytoriach napisane są zapytania w języku HQL (Oznaczone adnotacją `@Query` nad metodą).
 
+### Serwisy
+![Serwisy](./readme/services.png)
+Serwisy służą do obsługi logiki biznesowej.
+Każdy z serwisów implementuje interfejs, który zawiera metody do obsługi danych.
+
 
 ### Proces tworzenia
 ![Proces tworzenia](./readme/proces-tworzenia.png)
