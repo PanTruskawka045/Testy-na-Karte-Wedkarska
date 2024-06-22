@@ -3,19 +3,20 @@
 Projekt stworzony w ramach przedmiotu `Programowanie Obiektowe` na `WSB Merito w Chorzowie`.
 Projekt zahostowany: [Karta Wedkarska](https://karta-wedkarska.pantruskawka045.me/)
 Instrukcja uruchomienia na samym dole.
+![rybki.gif](./readme/rybki.gif)
 
 ## Aplikacja Frontend
 ### Autoryzacja
 
 Strona logowania i rejestracji użytkownika.
-![login.png](.readme/frontend/login.png)
-![register.png](.readme/frontend/register.png)
+![login.png](./readme/frontend/login.png)
+![register.png](./readme/frontend/register.png)
 
 ### Ciemne tło
 
 Aplikacja posiada możliwość zmiany tła na ciemne.
 Zmiana tła jest możliwa przy użyciu przycisku w prawym górnym rogu aplikacji (z ikoną księżyca lub słońca).
-![dark-theme.png](.readme/frontend/dark-theme.png)
+![dark-theme.png](./readme/frontend/dark-theme.png)
 
 ### Testy
 Podgląd wszystkich testów
