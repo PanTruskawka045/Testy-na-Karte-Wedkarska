@@ -2,6 +2,28 @@
 
 Projekt stworzony w ramach przedmiotu `Programowanie Obiektowe` na `WSB Merito w Chorzowie`.
 
+## Aplikacja Frontend
+### Autoryzacja
+
+Strona logowania i rejestracji użytkownika.
+![login.png](.readme/frontend/login.png)
+![register.png](.readme/frontend/register.png)
+
+### Ciemne tło
+
+Aplikacja posiada możliwość zmiany tła na ciemne.
+Zmiana tła jest możliwa przy użyciu przycisku w prawym górnym rogu aplikacji (z ikoną księżyca lub słońca).
+![dark-theme.png](.readme/frontend/dark-theme.png)
+
+### Testy
+Podgląd wszystkich testów
+
+![tests.png](./readme/frontend/tests.png)
+
+Podgląd danego testu:
+
+![test-view.png](./readme/frontend/test-view.png)
+
 ## Struktura projektu
 
 ### Repozytoria
