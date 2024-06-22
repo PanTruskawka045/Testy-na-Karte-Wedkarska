@@ -1,6 +1,8 @@
 # Testy na kartę wędkarską
 
 Projekt stworzony w ramach przedmiotu `Programowanie Obiektowe` na `WSB Merito w Chorzowie`.
+Projekt zahostowany: [Karta Wedkarska](https://karta-wedkarska.pantruskawka045.me/)
+Instrukcja uruchomienia na samym dole.
 
 ## Aplikacja Frontend
 ### Autoryzacja
@@ -144,6 +146,34 @@ Frontend został stworzony przy pomocy biblioteki React.
 React to biblioteka JavaScript, która jest używana do tworzenia interaktywnych interfejsów użytkownika (UI).
 Została stworzona przez Facebooka i jest utrzymywana przez społeczność open-source.
 
+## Uruchamianie
+1. Pobierz projekt
+2. Utwórz bazę danych SQL (bazę danych, użytkownika z hasłem)
+3. Wejdź do pliku `./backend/resources/application.prod` i zmien `spring.profiles.active` na `dev` 
+4. Wejdź do pliku `./backend/resources/application-dev.yml` i edytuj dane do polaczenia do bazy danych. Do `security.allowed-origins` będzie wymagane dopisanie nazwy hosta, na którym będzie uruchomiona aplikacja. (domyślnie `localhost:8080`)
+5. W katalogu projektu wykonaj polecenie `.\gradlew buildprod` (Unix: `gradle buildprod`) Plik powinien znajdować się z folderze `./backend/libs/backend-0.0.1-SNAPSHOT.jar`
+6. Skopiuj w/w plik do innego folderu
+7. Uruchom program poleceniem:
+```sh
+java
+    -Dspring.datasource.password=HASLO
+    -Dspring.datasource.hikari.password=HASLO
+    -Xmx2G -Xms512M
+    -jar backend-0.0.1-SNAPSHOT.jar 
+```
+
 ## Proces tworzenia
 
 ![Proces tworzenia](./readme/proces-tworzenia.png)
+
+### Do zrobienia
+
+-Strona głowna- dodać jakieś fotki, ewentualnie 
+
+-Dodać pytania testowe, plus jakieś fotki do nich
+
+-Więcej struktury i metod obiektówki w dokumentacji 
+
+-paradygmat obiektowy
+
+-"nieobowiązkowe" dokładanie obiektówki do kodu - na moodle mają pojawić się zadania z tego
