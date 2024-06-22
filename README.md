@@ -3,6 +3,7 @@
 Projekt stworzony w ramach przedmiotu `Programowanie Obiektowe` na `WSB Merito w Chorzowie`.
 Projekt zahostowany: [Karta Wedkarska](https://karta-wedkarska.pantruskawka045.me/)
 Instrukcja uruchomienia na samym dole.
+
 ![rybki.gif](./readme/rybki.gif)
 
 ## Aplikacja Frontend
