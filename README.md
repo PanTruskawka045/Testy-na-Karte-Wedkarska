@@ -167,15 +167,3 @@ java
 ## Proces tworzenia
 
 ![Proces tworzenia](./readme/proces-tworzenia.png)
-
-### Do zrobienia
-
--Strona głowna- dodać jakieś fotki, ewentualnie 
-
--Dodać pytania testowe, plus jakieś fotki do nich
-
--Więcej struktury i metod obiektówki w dokumentacji 
-
--paradygmat obiektowy
-
--"nieobowiązkowe" dokładanie obiektówki do kodu - na moodle mają pojawić się zadania z tego
