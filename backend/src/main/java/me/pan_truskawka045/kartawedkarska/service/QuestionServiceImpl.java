@@ -80,7 +80,6 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void markAnswer(int questionId, int markedAnswer, Test test) {
-        System.out.println(test.getPublicId() + " " + markedAnswer + " " + questionId);
         if (test.getStatus() != TestStatus.IN_PROGRESS) {
             throw new TestAlreadyFinishedException();
         }

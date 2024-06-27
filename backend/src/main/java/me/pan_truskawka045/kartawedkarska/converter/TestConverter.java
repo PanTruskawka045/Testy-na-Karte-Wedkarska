@@ -22,7 +22,6 @@ public class TestConverter implements AttributeConverter<TestQuestions, String> 
 
     @Override
     public TestQuestions convertToEntityAttribute(String s) {
-        System.out.println(s);
         try {
             return mapper.readValue(s, typeReference);
         } catch (JsonProcessingException e) {
