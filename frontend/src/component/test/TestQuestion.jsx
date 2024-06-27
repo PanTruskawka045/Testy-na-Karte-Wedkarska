@@ -13,7 +13,7 @@ function TestQuestion() {
                         <h1 className={"text-3xl font-bold text-center"}>{test.test.questions[test.currentQuestion].question}</h1>
                     </div>
                     <div className={"w-auto flex justify-center"}>
-                        <img src={"https://bigrat.monster/media/bigrat.jpg"} alt={"bigrat"} className={"h-72"}/>
+                        <img src={test.test.questions[test.currentQuestion].image} alt={"bigrat"} className={"h-72"}/>
                     </div>
                 </>
             ) : (
