@@ -146,6 +146,13 @@ skalowalnych i wydajnych aplikacji enterprise.
 GitHub Copilot to zaawansowane narzędzie wspomagające pisanie kodu, oparte na sztucznej inteligencji, które zostało
 opracowane przez GitHub we współpracy z OpenAI.
 
+### Microsoft Designer
+
+![designer.png](./readme/designer.png)
+
+Korzystaliśmy z Microsoft Designer, aby stworzyć ciekawe i kreatywne grafiki do pytań, strony głównej czy logo.
+Dzięki wbudowanym funkcjom AI, Designer zaproponował kilka różnych układów i stylów, które mogliśmy dostosować do naszych potrzeb.
+
 ### React
 
 ![React](./readme/react.png)
