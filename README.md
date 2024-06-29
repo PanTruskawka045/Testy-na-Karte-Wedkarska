@@ -30,6 +30,12 @@ Podgląd danego testu:
 
 ## Struktura projektu
 
+Projekt implementuje zasady programowania obiektowego takie jak:
+- Dziedziczenie: klasa `CompletedTestAnswer` dziedziczy po  `TestAnswer`, oraz Wyjątki dziedziczą po `InternalServerException`.
+- Polimorfizm: Projekt zawiera interfejsy, które są serwisami i ich implementacje w innych klasach.
+- Hermetyzacja: Klasy są odpowiednio zabezpieczone przed nieautoryzowanym dostępem (np. w taki sposób, że zmienne są prywatne i są zrobione Gettery).
+- Abstrakcja: Klasy są odpowiednio zbudowane, aby były czytelne i zrozumiałe.
+
 ### Repozytoria
 
 ![Repozytoria](./readme/repositories.png)
